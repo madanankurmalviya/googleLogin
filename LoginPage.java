@@ -12,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import java.util.File;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -109,6 +110,10 @@ public class LoginPage
 	@AfterMethod
 	public void tearDown()
 	{
+		TakesScreenshot sht =(TakesScreenshot) driver;
+		File src = sht.getScreenshotAs(OutputType.FILE);
+		File dest = new File (".//Driver/picture.jpeg");
+		Files.copy(src,dest);		
 		driver.quit();
 	}
 }
